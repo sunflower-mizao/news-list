@@ -77,6 +77,11 @@ html(lang='en')
       .pageList .active{
             color: brown;
       }
+      .toNews{
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      }
   body
     .contain
       .nav
@@ -120,6 +125,7 @@ html(lang='en')
                 img(src=val.imgUrl)
               td
                 a(class="delBtn" href='/admin/deleteData?id='+val.id) 删除
+        a.toNews(href='/news/index') 退出后台
         footer
         .pageList
             a.prev(href='/admin/index?p='+(p<=1?1:(p-1))) <
@@ -147,5 +153,6 @@ html(lang='en')
       var test = window.location.href;
       //console.log(test);
       let p = test.substring(test.length-1);
+      p = isNaN(p) ? 1 : p;
       //console.log(p);
       bottonList[p-1].classList.add("active");

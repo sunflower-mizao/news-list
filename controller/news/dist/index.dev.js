@@ -9,6 +9,7 @@ module.exports = {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            // console.log(ctx.query)
             p = parseInt(ctx.query.p) || 1;
             perPage = 5; // let pageCount = Math.ceil(JSON.parse(JSON.stringify(data)).length / perPage);
             // ctx.body = "新闻的主页";
