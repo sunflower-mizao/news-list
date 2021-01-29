@@ -1,0 +1,151 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    style.
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      }
+      .contain {
+      width: 100%;
+      height: 100vh;
+      /* background-color: blueviolet; */
+      display: flex;
+      }
+      .nav {
+      width: 200px;
+      /* height: 100%; */
+      background-color: #555;
+      }
+      .addNews,.newsList {
+      /* flex: 7; */
+      width: inherit;
+      /* height: 600px; */
+      flex: 1;
+      /* background-color: brown; */
+      padding: 20px 50px;
+      }
+      .addNews{
+      display: none;
+      }
+      .newsList{
+      display: inline-block;
+      }
+      .nav a {
+      display: inline-block;
+      width: 200px;
+      height: 70px;
+      text-align: center;
+      line-height: 70px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      }
+      .nav a:hover {
+      color: yellow;
+      background-color: #666;
+      }
+      textarea {
+      vertical-align: top;
+      }
+      .addNews form div{
+      margin-bottom: 20px;
+      }
+      .newsList table{
+      width: 1000px;
+      text-align: center;
+      vertical-align: middle;
+      border-collapse: collapse;
+      /* display: inline-block; */
+      }
+      .newsList table th,.newsList table td{
+      padding: 5px;
+      }
+      .newsList tbody img{
+          height: 70px;
+      }
+      .pageList a{
+            text-decoration: none;
+            color: #333;
+            margin-left: 10px;
+      }
+      .pageList .active{
+            color: brown;
+      }
+  body
+    .contain
+      .nav
+        a 新闻添加
+        a(style='color: yellow;') 新闻列表
+      .addNews
+        form(action='/admin/addData' method='post' enctype="multipart/form-data")
+          h2(style='margin-bottom: 20px;') 添加新闻
+          div
+            span 标题：
+            input(type='text' name="title")
+          div
+            span 内容：
+            textarea(rows='5' cols='20' name="content")
+          div
+            span 类型：
+            select(name="type")
+              option(value='逮捕') 逮捕
+              option(value='疫情') 疫情
+              option(value='纵火') 纵火
+          div
+            span 缩略图：
+            input(type='file' name="img")
+          button(type='submit') 提交
+      .newsList
+        table(border='1' cellspacing='0')
+          thead
+            tr
+              th 标题
+              th 类型
+              th 时间
+              th 缩略图
+              th 操作
+          tbody
+          each val in newsData
+            tr
+              td #{val.title}
+              td #{val.from}
+              td #{val.newTime}
+              td
+                img(src=val.imgUrl)
+              td
+                a(class="delBtn" href='/admin/deleteData?id='+val.id) 删除
+        footer
+        .pageList
+            a.prev(href='/admin/index?p='+(p<=1?1:(p-1))) <
+            - for (let i=1;i<=pCount;i++)
+                a.page(href='/admin/index?p='+i) #{i}
+            a.next(href='/admin/index?p='+(p>=pCount?pCount:(p+1))) >
+    script.
+      let navsList = document.querySelectorAll(".nav a");
+      let addNews = document.querySelector(".addNews");
+      let newsList = document.querySelector(".newsList");
+      navsList[0].onclick = function(){
+      navsList[1].style.color = "white";
+      navsList[0].style.color = "yellow";
+      addNews.style.display = "inline-block";
+      newsList.style.display = "none";
+      }
+      navsList[1].onclick = function(){
+      navsList[0].style.color = "white";
+      navsList[1].style.color = "yellow";
+      newsList.style.display = "inline-block";
+      addNews.style.display = "none";
+      }
+
+      let bottonList = document.querySelectorAll(".page");
+      var test = window.location.href;
+      //console.log(test);
+      let p = test.substring(test.length-1);
+      //console.log(p);
+      bottonList[p-1].classList.add("active");

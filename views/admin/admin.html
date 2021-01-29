@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .contain {
+            width: 100%;
+            height: 100vh;
+            /* background-color: blueviolet; */
+            display: flex;
+        }
+
+        .nav {
+            width: 200px;
+            /* height: 100%; */
+            background-color: #555;
+        }
+
+        .addNews,.newsList {
+            /* flex: 7; */
+            width: inherit;
+            /* height: 600px; */
+            flex: 1;
+            /* background-color: brown; */
+            padding: 20px 50px;
+            
+        }
+        .addNews{
+            display: inline-block;
+        }
+        .newsList{
+            display: none;
+        }
+        .nav a {
+            display: inline-block;
+            width: 200px;
+            height: 70px;
+            text-align: center;
+            line-height: 70px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .nav a:hover {
+            color: yellow;
+            background-color: #666;
+        }
+
+        textarea {
+            vertical-align: top;
+        }
+        .addNews form div{
+            margin-bottom: 20px;
+        }
+        .newsList table{
+            width: 800px;
+            text-align: center;
+            vertical-align: middle;
+            border-collapse: collapse;
+            /* display: inline-block; */
+        }
+        .newsList table th,.newsList table td{
+            padding: 5px;
+        }
+        footer a{
+            text-decoration: none;
+            color: #333;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div class="nav">
+            <a href="#" style="color: yellow;">新闻添加</a>
+            <a href="#">新闻列表</a>
+        </div>
+        <div class="addNews">
+            <form action="action_page.php" method="GET" accept-charset="UTF-8">
+                <h2 style="margin-bottom: 20px;">添加新闻</h2>
+                <div><span>标题：</span><input type="text"></div>
+                <div><span>内容：</span><textarea rows="5" cols="20"></textarea></div>
+                <div>
+                    <span>类型：</span>
+                    <select>
+                        <option value="daibu">逮捕</option>
+                        <option value="yiqing">疫情</option>
+                        <option value="zonghuo">纵火</option>
+                    </select>
+                </div>
+                <div><span>缩略图：</span><input type="file" value="上传图片"></div>
+                <button type="submit">提交</button>
+            </form>
+        </div>
+        <div class="newsList">
+            <table border="1" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>类型</th>
+                        <th>国家</th>
+                        <th>缩略图</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+               <tbody>
+                    <tr>
+                        <td>河北廊坊要求市民居家观察7天，全省高、中风险地区1+390</td>
+                        <td>纵火</td>
+                        <td>韩国</td>
+                        <td><img src="http://d.ifengimg.com/w144_h80_q90/x0.ifengimg.com/ucms/2021_03/0521A21D33FE195C8DFC572FC1124EE8A65E0970_size91_w512_h288.jpg"></td>
+                        <td><a href="#">删除</a></td>
+                    </tr>
+               </tbody>
+                
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let navsList = document.querySelectorAll(".nav a");
+        let addNews = document.querySelector(".addNews");
+        let newsList = document.querySelector(".newsList");
+        navsList[0].onclick = function(){
+            navsList[1].style.color = "white";
+            navsList[0].style.color = "yellow";
+            addNews.style.display = "inline-block";
+            newsList.style.display = "none";
+        }
+        navsList[1].onclick = function(){
+            navsList[0].style.color = "white";
+            navsList[1].style.color = "yellow";
+            newsList.style.display = "inline-block";
+            addNews.style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    style.
+      *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      }
+      #contain{
+      width: 600px;
+      /* background-color:brown; */
+      margin: 0 auto;
+      }
+      .newItem{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 600px;
+      height: 130px;
+      /* background-color: blueviolet; */
+      padding: 15px 0;
+      border-bottom: 1px solid #ccc;
+      }
+      .newInfo{
+      width: 400px;
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      }
+      .bottomData{
+      display: flex;
+      justify-content: space-between;
+      }
+      img{
+      height: 100px;
+      /* width: 200px; */
+      }
+      .title{
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 600;
+      color: #000;
+      }
+      span,time{
+      font-size: 13px;
+      color: #888;
+      }
+      .pageList{
+      width: 320px;
+      margin: 10px auto;
+      /* background-color: aqua; */
+      }
+      footer a{
+      text-decoration: none;
+      color: #111;
+      display:inline-block;
+      width: 30px;
+      height: 30px;
+      /* border: 1px solid #666; */
+      background: #ddd;
+      text-align: center;
+      line-height: 30px;
+      margin-left: 10px;
+      }
+      footer a:hover,footer a:focus{
+        color: #fff;
+        background: brown;
+      }
+      .active{
+        color: #fff;
+        background: brown;
+      }
+      .prev{
+      border-radius: 50% 0 0 50%;
+      }
+      .next{
+      border-radius: 0 50% 50% 0;
+      }
+  body
+    #contain
+      section
+        ul.newList
+        for val in newsData
+            li.newItem
+                img(src=val.imgUrl)
+                .newInfo
+                    a.title(href='/news/detail?id='+val.id) #{val.title}
+                    .bottomData
+                        span #{val.from}
+                        time #{val.newTime}
+  
+      footer
+        .pageList
+            a.prev(href='/news/index?p='+(p<=1?1:(p-1))) <
+            - for (let i=1;i<=pCount;i++)
+                a.page(href='/news/index?p='+i) #{i}
+            a.next(href='/news/index?p='+(p>=pCount?pCount:(p+1))) >
+        //-   a.prev(href='javascript:;') <
+        //-   a(href='javascript:;') 1
+        //-   a(href='javascript:;') 2
+        //-   a(href='javascript:;') 3
+        //-   a(href='javascript:;') 4
+        //-   a(href='javascript:;') 5
+        //-   a.next(href='javascript:;') >
+
+    script(type="text/javascript").
+      let bottonList = document.querySelectorAll(".page");
+      var test = window.location.href;
+      //- console.log(test);
+      let p = test.substring(test.length-1);
+      //- console.log(p);
+      bottonList[p-1].classList.add("active");
+      //- bottonList.forEach((item,key) => {
+      //-           item.onclick = function(){
+      //-               bottonList.forEach(item=>{
+      //-                   item.classList.remove("active");
+      //-               });
+      //-               this.classList.add("active");
+      //-           }
+      //-       });

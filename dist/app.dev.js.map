@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":["Koa","require","views"],"mappings":";;AAAA,IAAMA,GAAG,GAAEC,OAAO,CAAC,KAAD,CAAlB;;AACA,IAAMC,KAAK,GAAGD,OAAO,CAAC,WAAD,CAArB","sourcesContent":["const Koa =require(\"koa\");\r\nconst views = require(\"koa-voews\")"],"file":"app.dev.js"}
