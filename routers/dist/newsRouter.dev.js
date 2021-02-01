@@ -12,5 +12,6 @@ router.get("/", function (ctx) {
 });
 router.get("/index", newsController.index);
 router.get("/detail", newsController.detail);
+router.get("/getData", newsController.getMassage);
 module.exports = router;
 //# sourceMappingURL=newsRouter.dev.js.map

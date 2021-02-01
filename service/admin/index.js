@@ -1,6 +1,6 @@
 const fs = require("fs");
 const mysql2 = require("mysql2");
-const { deleteData } = require("../../controller/admin");
+// const { deleteData } = require("../../controller/admin");
 const connection = mysql2.createConnection({
     host:'localhost',
     user:'root',

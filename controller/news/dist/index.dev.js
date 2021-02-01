@@ -66,6 +66,27 @@ module.exports = {
         }
       }
     });
+  },
+  getMassage: function getMassage(ctx) {
+    var data;
+    return regeneratorRuntime.async(function getMassage$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return regeneratorRuntime.awrap(newsModel.massageData());
+
+          case 2:
+            data = _context3.sent;
+            //  console.log(rows);
+            ctx.body = data;
+
+          case 4:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    });
   }
 };
 //# sourceMappingURL=index.dev.js.map

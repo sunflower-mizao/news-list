@@ -1,7 +1,7 @@
 {
   "name": "news",
   "version": "1.0.0",
-  "description": "",
+  "description": "news-list\r 基于nodejs的新闻列表简易前后台",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,12 +9,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.13.1",
+    "koa": "^2.11.0",
     "koa-body": "^4.2.0",
     "koa-router": "^10.0.0",
     "koa-static": "^5.0.0",
     "koa-views": "^7.0.0",
     "mysql2": "^2.2.5",
-    "pug": "^3.0.0"
-  }
+    "pug": "^3.0.0",
+    "socket.io": "^2.4.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunflower-mizao/news-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sunflower-mizao/news-list/issues"
+  },
+  "homepage": "https://github.com/sunflower-mizao/news-list#readme"
 }

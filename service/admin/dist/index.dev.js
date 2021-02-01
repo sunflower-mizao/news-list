@@ -10,10 +10,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var fs = require("fs");
 
-var mysql2 = require("mysql2");
+var mysql2 = require("mysql2"); // const { deleteData } = require("../../controller/admin");
 
-var _require = require("../../controller/admin"),
-    deleteData = _require.deleteData;
 
 var connection = mysql2.createConnection({
   host: 'localhost',

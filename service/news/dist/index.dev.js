@@ -85,6 +85,52 @@ module.exports = {
         }
       }
     });
+  },
+  massageData: function massageData() {
+    var _ref7, _ref8, rows;
+
+    return regeneratorRuntime.async(function massageData$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return regeneratorRuntime.awrap(connection.promise().query("SELECT * FROM chat"));
+
+          case 2:
+            _ref7 = _context4.sent;
+            _ref8 = _slicedToArray(_ref7, 1);
+            rows = _ref8[0];
+            return _context4.abrupt("return", rows);
+
+          case 6:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    });
+  },
+  addMassageData: function addMassageData(data) {
+    var _ref9, _ref10, rows;
+
+    return regeneratorRuntime.async(function addMassageData$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return regeneratorRuntime.awrap(connection.promise().query("INSERT INTO chat(content) VALUES (?)", [data]));
+
+          case 2:
+            _ref9 = _context5.sent;
+            _ref10 = _slicedToArray(_ref9, 1);
+            rows = _ref10[0];
+            return _context5.abrupt("return", rows);
+
+          case 6:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    });
   }
 };
 //# sourceMappingURL=index.dev.js.map

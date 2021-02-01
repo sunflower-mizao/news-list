@@ -6,4 +6,5 @@ let router = new Router({
 router.get("/", ctx=>{ctx.redirect("/news/index")});
 router.get("/index", newsController.index);
 router.get("/detail", newsController.detail);
+router.get("/getData",newsController.getMassage);
 module.exports = router;

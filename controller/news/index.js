@@ -23,5 +23,10 @@ module.exports = {
         await ctx.render("./news/detail.pug",{
             detailData
         })
-    }
+    },
+    async getMassage(ctx){
+        let data  =  await newsModel.massageData();
+       //  console.log(rows);
+       ctx.body = data;
+       }
 }

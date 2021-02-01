@@ -19,5 +19,16 @@ module.exports = {
     async getTotalData(){
         const [rows] = await connection.promise().query(`SELECT * FROM news`);
         return rows;
+    },
+    async massageData(){
+        let [rows]  =  await connection.promise().query("SELECT * FROM chat");
+        //  console.log(rows);
+        return rows;
+    },
+    async addMassageData(data){
+        let [rows] = await connection.promise().query("INSERT INTO chat(content) VALUES (?)",[data]);
+        //  console.log(rows);
+        return rows;
     }
+    
 }
